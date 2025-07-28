@@ -8,7 +8,7 @@ import "swiper/css/free-mode"
 import "swiper/css/pagination"
 // import "../../.."
 // Import required modules
-import { FreeMode, Pagination } from "swiper"
+import { FreeMode, Pagination, Autoplay  } from "swiper"
 
 // import { getAllCourses } from "../../services/operations/courseDetailsAPI"
 import Course_Card from "./Course_Card"
@@ -17,19 +17,28 @@ function Course_Slider({ Courses }) {
   return (
     <>
       {Courses?.length ? (
+         
+      
         <Swiper
-          slidesPerView={1}
-          spaceBetween={25}
-          loop={true}
-          modules={[FreeMode, Pagination]}
-          breakpoints={{
-            1024: {
-              slidesPerView: 3,
-            },
-          }}
-          className="max-h-[30rem]"
-        >
+        slidesPerView={1}
+        spaceBetween={25}
+        loop={true}
+        loopFillGroupWithBlank={true} 
+        autoplay={{
+          delay: 1000,
+          disableOnInteraction: false,
+        }}
+        modules={[FreeMode, Pagination, Autoplay]}
+        breakpoints={{
+          1024: {
+            slidesPerView: 3,
+          },
+        }}
+        className="max-h-[30rem]"
+      >
+
           {Courses?.map((course, i) => (
+       
             <SwiperSlide key={i}>
               <Course_Card course={course} Height={"h-[250px]"} />
             </SwiperSlide>
