@@ -14,6 +14,12 @@ body {
   scrollbar-color: #afb2bf;
 }
 
+.custom-swiper-pagination .swiper-pagination-bullet {
+  background-color: #089bea; /* yellow or any color you want */
+  
+}
+
+
 /* Chrome, Edge, and Safari */
 *::-webkit-scrollbar {
   width: 3px;
