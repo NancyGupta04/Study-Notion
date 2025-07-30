@@ -14,6 +14,7 @@ const {
 
 
 // Load the Razorpay SDK from the CDN
+//script ko load karenge
 function loadScript(src) {
   return new Promise((resolve) => {
     const script = document.createElement("script")
@@ -79,6 +80,7 @@ export async function BuyCourse(
         name: `${user_details.firstName} ${user_details.lastName}`,
         email: user_details.email,
       },
+      //agar ye chll gya toh ye 2 function call honge
       handler: function (response) {
         sendPaymentSuccessEmail(response, orderResponse.data.data.amount, token)
         verifyPayment({ ...response, courses }, token, navigate, dispatch)
