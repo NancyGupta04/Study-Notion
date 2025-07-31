@@ -4,6 +4,7 @@ import { updateCompletedLectures } from "../../slices/viewCourseSlice"
 // import { setLoading } from "../../slices/profileSlice";
 import { apiConnector } from "../apiConnector"
 import { courseEndpoints } from "../apis"
+import { useSelector } from "react-redux"
 
 const {
   COURSE_DETAILS_API,
@@ -221,8 +222,10 @@ export const updateSubSection = async (data, token) => {
 export const deleteSection = async (data, token) => {
   let result = null
   const toastId = toast.loading("Loading...")
+  // const{token}=useSelector((state) => state.auth)
+  console.log("Token being sent:", token);
   try {
-    const response = await apiConnector("POST", DELETE_SECTION_API, data, {
+    const response = await apiConnector("DELETE", DELETE_SECTION_API, data, {
       Authorization: `Bearer ${token}`,
     })
     console.log("DELETE SECTION API RESPONSE............", response)
@@ -243,7 +246,7 @@ export const deleteSubSection = async (data, token) => {
   let result = null
   const toastId = toast.loading("Loading...")
   try {
-    const response = await apiConnector("POST", DELETE_SUBSECTION_API, data, {
+    const response = await apiConnector("DELETE", DELETE_SUBSECTION_API, data, {
       Authorization: `Bearer ${token}`,
     })
     console.log("DELETE SUB-SECTION API RESPONSE............", response)
